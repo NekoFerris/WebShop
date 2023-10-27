@@ -1,0 +1,11 @@
+﻿@page
+@model WebShop.Pages.Shared.asucheModel
+@{
+}
+<form>
+    <p>Suche: <input asp-for="suchb" type="text" /> <button type="submit" asp-page-handler="Suchen" formmethod="post">suchen</button></p>
+</form>
+@foreach(Artikel a in Model.artikels)
+{
+    <p>@a</p>
+}
