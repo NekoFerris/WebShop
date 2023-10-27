@@ -17,8 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: checkout submodule
-    - run: git submodule init
-    - run: git submodule update
+    - uses: chris-short/github-action-git-submodules@v0.1.0
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
