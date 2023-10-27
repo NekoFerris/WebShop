@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: jwsi/submodule-checkout@v1
+    - uses: textbook/git-checkout-submodule-action@2.1.1
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
