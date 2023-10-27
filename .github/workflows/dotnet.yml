@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: runsascoded/update-submodules@gha0.0.2
+    - uses: jwsi/submodule-checkout@v1
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
