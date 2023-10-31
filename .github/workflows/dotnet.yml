@@ -18,6 +18,7 @@ jobs:
       uses: actions/checkout@v4.1.1
       with:
         ssh-private-key: |
+          ${{ github.token }}
           ${{ secrets.SHOPBASE }}
         submodules: recursive
     - name: Setup .NET
