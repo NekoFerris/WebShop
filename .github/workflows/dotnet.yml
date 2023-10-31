@@ -16,11 +16,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Submodule Checkout
-      env: # Or as an environment variable
-       sshobbase: ${{ secrets.SHOPBASE }}
       uses: jwsi/submodule-checkout@v1
       with:
-       ssh-key: sshobbase
+       ssh-key: secrets.SHOPBASE
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
