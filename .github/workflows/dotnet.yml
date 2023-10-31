@@ -14,9 +14,10 @@ jobs:
   
     runs-on: ubuntu-latest
     steps:
-    - run: eval `ssh-agent -s`
-    - run: ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
     - uses: actions/checkout@v3
+      with:
+       ssh-key: ${{ secrets.PRIVATE_SSH_KEY }}
+       submodules: 'recursive'
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
