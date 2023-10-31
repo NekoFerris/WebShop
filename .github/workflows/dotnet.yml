@@ -18,7 +18,7 @@ jobs:
     - name: Submodule Checkout
       uses: jwsi/submodule-checkout@v1
       with:
-       ssh-key: secrets.SHOPBASE
+       ssh-key: ${{ secrets.SHOPBASE }} 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
