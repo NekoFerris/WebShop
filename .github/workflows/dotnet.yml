@@ -16,15 +16,10 @@ jobs:
     steps:
     - name: Checkout code (no submodules)
       uses: actions/checkout@v4.1.1
-
-    - name: Add SSH private keys for submodule repositories
-      uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: |
           ${{ secrets.SHOPBASE }}
-
-    - name: Update submodules
-      run: git submodule update --init --recursive
+        submodules: recursive
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
