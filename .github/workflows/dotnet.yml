@@ -11,14 +11,11 @@ on:
 
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
     steps:
+    - run: ssh-add - <<< '${{ secrets.PRIVATE_SSH_KEY }}'
     - uses: actions/checkout@v3
-    - name: Submodule Checkout
-      uses: jwsi/submodule-checkout@v1
-      with:
-       ssh-key: ${{ secrets.SHOPBASE }} 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
