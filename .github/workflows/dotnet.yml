@@ -14,17 +14,18 @@ jobs:
   
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code (no submodules)
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Checkout Submodule
       uses: actions/checkout@v4.1.1
       with:
-        ssh-private-key: |
-          ${{ github.token }}
-          ${{ secrets.SHOPBASE }}
-        submodules: recursive
+        repository: BSZWiesauUnofficial/Andreas_WebShop
+        token: ${{ secrets.SHOPBASE }} # `GH_PAT` is a secret that contains your PAT
+        path: ShopBase
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v3.2.0
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 7.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
