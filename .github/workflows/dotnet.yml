@@ -15,12 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.1.1
     - name: Checkout Submodule
       uses: actions/checkout@v4.1.1
       with:
         repository: BSZWiesauUnofficial/Andreas_WebShop
-        token: ${{ secrets.SHOPBASE }}
         path: ShopBase
     - name: Setup .NET
       uses: actions/setup-dotnet@v3.2.0
