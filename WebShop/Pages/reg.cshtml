@@ -2,3 +2,35 @@
 @model WebShop.Pages.regModel
 @{
 }
+<form method="post" class="row g-3">
+    <div class="col-md-6">
+        <label for="name">Name</label>
+        <input id="name" asp-for="Kunde.Name" />
+    </div>
+    <div class="col-md-6">
+        <label for="vorname">Vorname</label>
+        <input id="vorname" asp-for="Kunde.Vorname" />
+    </div>
+    <div class="col-md-6">
+        <label for="adresse">Adresse</label>
+        <input id="adresse" asp-for="Kunde.Adresse" />
+    </div>
+    <div class="col-md-6">
+        <label for="geschlecht">Geschlecht</label>
+        <select id="geschlecht" asp-for="Kunde.Geschlecht">
+            <option value="1">Männlich</option>
+            <option value="2">Weiblich</option>
+            <option value="3">Divers</option>
+        </select>
+    </div>
+    <div class="col-md-12">
+        <label for="gebdat">Geburtstag</label>
+        <input id="gebdat" asp-for="Kunde.GebDat" />
+    </div>
+    <div class="col-6">
+        <button type="submit" class="btn btn-primary" asp-page-handler="Reg">Regestrieren</button>
+    </div>
+    <div class="col-6">
+        <button type="reset" class="btn btn-secondary">Zurücksetzen</button>
+    </div>
+</form>
