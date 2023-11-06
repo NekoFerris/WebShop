@@ -1,11 +1,39 @@
 ﻿@page
+@using System.Globalization;
 @model WebShop.Pages.Shared.asucheModel
 @{
 }
 <form>
     <p>Suche: <input asp-for="suchb" type="text" /> <button type="submit" asp-page-handler="Suchen" formmethod="post">suchen</button></p>
 </form>
+
+<div class="grid gap-3">
 @foreach(Artikel a in Model.artikels)
 {
-    <p>@a</p>
+    <div class="p-2 g-col-6 margin-1">
+        <form class="row border border-primary-subtle rounded-2 bg-light">
+            <div class="row  m-1">
+                    <div class="col fw-bold">
+                    <span>@a.Bezeichnung</span>
+                </div>
+                    <div class="col">
+                    @a.Preis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))
+                </div>
+            </div>
+            <div class="row  m-1">
+                <div class="col">
+                    <span>@a.Beschreibung</span>
+                </div>
+            </div>
+                <div class="row  m-1">
+                    <div class="col">
+                    <span>Anzahl</span> <input type="number" />
+                </div>
+                    <div class="col">
+                    <button type="submit" value="@a.Id">In den Warenkorb</button>
+                </div>
+            </div>
+        </form>
+    </div>
 }
+</div>
