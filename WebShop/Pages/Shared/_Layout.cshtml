@@ -22,12 +22,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/asuche">Artikelsuche</a>
                         </li>
+                        @if (string.IsNullOrEmpty(Context.Session.GetString("lhash")))
+                        {
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/reg">Regestrieren</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/login">Login</a>
                         </li>
+                        }
+                        else
+                        {
+                        <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/logout">@Kunde.Lesen(Int32.Parse(Context.Session.GetString("id"))).Email Logout</a>
+                        </li>
+                        }
                     </ul>
                 </div>
             </div>

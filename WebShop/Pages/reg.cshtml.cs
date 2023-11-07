@@ -5,6 +5,9 @@ namespace WebShop.Pages
 {
     public class regModel : PageModel
     {
+        public const string LoginHash = "lhash";
+        public const string LoginAge = "lage";
+
         [BindProperty]
         public Kunde k { get; set; } = new();
 
