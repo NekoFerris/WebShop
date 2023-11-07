@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +28,17 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/reg">Regestrieren</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/login">Login</a>
+                                <form name="login" method="post" class="row g-3" asp-page="/login" asp-page-handler="Login">
+                                    <div class="col">
+                                        <input  required />
+                                    </div>
+                                    <div class="col">
+                                        <input  type="password" required />
+                                    </div>
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    </div>
+                                </form>
                         </li>
                         }
                         else
