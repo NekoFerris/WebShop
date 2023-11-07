@@ -15,6 +15,8 @@ namespace WebShop.Pages
         public void OnPostReg()
         {
             k.Anlegen();
+            k = new();
+            Response.Redirect("/");
         }
     }
 }
