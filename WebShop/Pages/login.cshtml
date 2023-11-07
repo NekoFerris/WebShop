@@ -2,19 +2,16 @@
 @model WebShop.Pages.Shared.loginModel
 @{
 }
-<form method="post" class="row g-3" asp-page-handler="Login">
-    <div class="col-md-6">
-        <label for="k_Vorname">Name</label>
+<form name="login" method="post" class="row g-3" asp-page-handler="Login">
+    <div class="col">
+        <label for="email">E-mail</label>
         <input asp-for="email" required />
     </div>
-    <div class="col-md-6">
-        <label for="k_Vorname">Vorname</label>
-        <input asp-for="passwort" required />
+    <div class="col">
+        <label for="passwort">Passwort</label>
+        <input asp-for="passwort" type="password" required />
     </div>
-    <div class="col-6">
-        <button type="submit" class="btn btn-primary">Regestrieren</button>
-    </div>
-    <div class="col-6">
-        <button type="reset" class="btn btn-secondary">Zurücksetzen</button>
+    <div class="col">
+        <button type="submit" class="btn btn-primary">Login</button>
     </div>
 </form>
