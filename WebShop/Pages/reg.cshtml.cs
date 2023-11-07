@@ -5,7 +5,8 @@ namespace WebShop.Pages
 {
     public class regModel : PageModel
     {
-        public Kunde Kunde { get; set; } = new();
+        [BindProperty]
+        public Kunde k { get; set; } = new();
 
         public void OnGet()
         {
@@ -13,7 +14,7 @@ namespace WebShop.Pages
 
         public void OnPostReg()
         {
-            Kunde.Anlegen();
+            k.Anlegen();
         }
     }
 }

@@ -2,33 +2,41 @@
 @model WebShop.Pages.regModel
 @{
 }
-<form method="post" class="row g-3">
+<form method="post" class="row g-3" asp-page-handler="Reg">
     <div class="col-md-6">
-        <label for="name">Name</label>
-        <input id="name" asp-for="Kunde.Name" />
+        <label for="k_Vorname">Name</label>
+        <input asp-for="k.Name" required />
     </div>
     <div class="col-md-6">
-        <label for="vorname">Vorname</label>
-        <input id="vorname" asp-for="Kunde.Vorname" />
+        <label for="k_Vorname">Vorname</label>
+        <input asp-for="k.Vorname" required />
     </div>
     <div class="col-md-6">
-        <label for="adresse">Adresse</label>
-        <input id="adresse" asp-for="Kunde.Adresse" />
+        <label for="k_Adresse">Adresse</label>
+        <input asp-for="k.Adresse" required />
     </div>
     <div class="col-md-6">
-        <label for="geschlecht">Geschlecht</label>
-        <select id="geschlecht" asp-for="Kunde.Geschlecht">
+        <label for="k_Geschlecht">Geschlecht</label>
+        <select id="_Geschlecht" asp-for="k.Geschlecht" required>
             <option value="1">Männlich</option>
             <option value="2">Weiblich</option>
             <option value="3">Divers</option>
         </select>
     </div>
+    <div class="col-md-6">
+        <label for="k_Email">E-mail</label>
+        <input asp-for="k.Email" type="email" required />
+    </div>
+    <div class="col-md-6">
+        <label for="k_Pw">Passwort</label>
+        <input asp-for="k.Pw" type="password" required />
+    </div>
     <div class="col-md-12">
-        <label for="gebdat">Geburtstag</label>
-        <input id="gebdat" asp-for="Kunde.GebDat" />
+        <label for="k_GebDat">Geburtstag</label>
+        <input type="date" asp-for="k.GebDat" required />
     </div>
     <div class="col-6">
-        <button type="submit" class="btn btn-primary" asp-page-handler="Reg">Regestrieren</button>
+        <button type="submit" class="btn btn-primary">Regestrieren</button>
     </div>
     <div class="col-6">
         <button type="reset" class="btn btn-secondary">Zurücksetzen</button>
