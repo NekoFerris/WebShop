@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebShop.Pages
 {
@@ -14,7 +13,6 @@ namespace WebShop.Pages
 
         public void OnGet()
         {
-
         }
     }
 }
