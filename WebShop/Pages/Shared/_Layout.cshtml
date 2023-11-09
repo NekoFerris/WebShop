@@ -19,34 +19,29 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/asuche">Artikelsuche</a>
+                        <li class="nav-item p-2">
+                            <form method="post" class="input-group" asp-page="/asuche" asp-page-handler="Suchen">
+                                <input asp-route-suchb class="form-control" placeholder="Suche" name="suchb" type="text" />
+                                <button type="submit" class="btn btn-primary">suchen</button>
+                            </form>
                         </li>
                         @if (string.IsNullOrEmpty(Context.Session.GetString("lhash")))
                         {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/reg">Regestrieren</a>
-                        </li>
-                        <li class="nav-item">
-                                <form name="login" method="post" class="row g-3" asp-page="/login" asp-page-handler="Login">
-                                    <div class="col">
-                                        <input  required />
-                                    </div>
-                                    <div class="col">
-                                        <input  type="password" required />
-                                    </div>
-                                    <div class="col">
-                                        <button type="submit" class="btn btn-primary">Login</button>
-                                    </div>
-                                </form>
+                        <li class="nav-item p-2">
+                                <form name="login" method="post" class="input-group" asp-page="/login" asp-page-handler="Login">
+                                <input class="form-control" name="email" placeholder="E-mail" type="email" asp-route-email />
+                                <input class="form-control" name="passwort" placeholder="Passwort" type="password" asp-route-passwort />
+                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-secondary" asp-page="/reg">Registrieren</button>
+                            </form>
                         </li>
                         }
                         else
                         {
-                            <li class="nav-item">
+                            <li class="nav-item p-2">
                                 <a class="nav-link text-dark">@Kunde.Lesen(Int32.Parse(Context.Session.GetString("id"))).Email</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item p-2">
                                 <a class="nav-link text-dark" asp-area="" asp-page="/logout">Logout</a>
                             </li>
                         }
@@ -62,9 +57,6 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - WebShop - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

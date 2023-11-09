@@ -5,19 +5,7 @@ namespace WebShop.Pages.Shared
 {
     public class loginModel : PageModel
     {
-        public const string LoginHash = "lhash";
-
-        [BindProperty]
-        public string email { get; set; }
-
-        [BindProperty]
-        public string passwort { get; set; }
-
-        public void OnGet()
-        {
-        }
-
-        public void OnPostLogin()
+        public void OnPostLogin(string email, string passwort)
         {
             if (Kunde.Auth(email, passwort, out Kunde k))
             {
