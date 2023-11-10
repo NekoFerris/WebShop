@@ -9,5 +9,10 @@ namespace WebShop.Pages.Shared
             HttpContext.Session.Clear();
             Response.Redirect("/");
         }
+        public void OnPost()
+        {
+            HttpContext.Session.Clear();
+            Response.Redirect("/");
+        }
     }
 }

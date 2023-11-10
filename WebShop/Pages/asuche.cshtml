@@ -2,36 +2,41 @@
 @using System.Globalization;
 @model WebShop.Pages.Shared.asucheModel
 <div class="grid gap-3">
+    <div class="col">
     @foreach (Artikel a in Model.artikels)
     {
         <div class="p-2 g-col-6 margin-1">
-            <form class="row border border-primary-subtle rounded-2 bg-light" asp-page-handler="AddArtikel" method="post">
-                <div class="row  m-1">
-                    <div class="col fw-bold">
-                        <span>@a.Bezeichnung</span>
+            <form class="row- border border-primary-subtle rounded-2 bg-light" asp-page-handler="AddArtikel" method="post">
+                <div class="row p-2">
+                    <div class="col-2 p-2">
+                        <div class="row fw-bold">
+                            <span>@a.Bezeichnung</span>
+                        </div>
+                        <div class="row">
+                            <span>@a.Preis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</span>
+                        </div>
                     </div>
-                    <div class="col">
-                        <span>@a.Preis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</span>
-                    </div>
-                </div>
-                <div class="row  m-1">
-                    <div class="col">
-                        <span>@a.Beschreibung</span>
+                    <div class="col p-2">
+                        <div class="col">
+                            <p>@a.Beschreibung</p>
+                        </div>
                     </div>
                 </div>
                 @if (!string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
                 {
-                    <div class="row  m-1">
-                        <div class="col text-nowrap">
-                        <span>Anzahl </span><input type="number" name="menge" asp-route-menge required />
-                    </div>
-                    <div class="col">
-                        <input type="hidden" name="artnr" asp-route-artnr value="@a.Id" />
-                        <button class="btn btn-primary" type="submit">In den Warenkorb</button>
+                <input type="hidden" name="artnr" asp-route-artnr value="@a.Id" />
+                <div class="row justify-content-end flex-nowrap p-2">
+                    <div class="col-5">
+                        <div class="input-group">
+                            <label class="input-group-text" for="menge">Anzahl</label>
+                            <input class="form-control" type="number" id="menge" name="menge" asp-route-menge required />
+                            <button class="btn btn-primary" type="submit">In den Warenkorb</button>
+                        </div>
                     </div>
                 </div>
                 }
             </form>
         </div>
     }
+    </div>
 </div>
