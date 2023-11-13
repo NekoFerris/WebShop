@@ -1,6 +1,10 @@
 ﻿@page
 @using System.Globalization;
 @model WebShop.Pages.Shared.asucheModel
+@if(Model.korrecktur != "")
+{
+    <div class="header"><span>Meinsten sie @Model.korrecktur?</span></div>
+}
 <div class="grid gap-3">
     <div class="col">
     @foreach (Artikel a in Model.artikels)
@@ -25,7 +29,7 @@
                 @if (!string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
                 {
                 <input type="hidden" name="artnr" asp-route-artnr value="@a.Id" />
-                <div class="row justify-content-end flex-nowrap p-2">
+                <div class="row justify-content-start flex-nowrap p-2">
                     <div class="col-5">
                         <div class="input-group">
                             <label class="input-group-text" for="menge">Anzahl</label>
