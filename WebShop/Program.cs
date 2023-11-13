@@ -1,3 +1,6 @@
+using Microsoft.AspNetCore.ResponseCompression;
+using WebShop.SignalR;
+
 namespace WebShop
 {
     public class Program
@@ -8,7 +11,12 @@ namespace WebShop
 
             // Add services to the container.
             builder.Services.AddRazorPages();
-
+            builder.Services.AddSignalR();
+            builder.Services.AddResponseCompression(opts =>
+            {
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                   new[] { "application/octet-stream" });
+            });
             builder.Services.AddDistributedMemoryCache();
 
             builder.Services.AddSession(options =>
@@ -33,6 +41,8 @@ namespace WebShop
             app.UseSession();
 
             app.MapRazorPages();
+            app.UseResponseCompression();
+            app.MapHub<Artikelsuche>("/asucher");
 
             app.Run();
         }

@@ -20,10 +20,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item p-2">
+                            <div class="dropdown" data-bs-display="static">
                             <form method="post" class="input-group" asp-page="/asuche" asp-page-handler="Suchen">
-                                <input asp-route-suchb class="form-control" placeholder="Suche" name="suchb" type="text" />
+                                <input asp-route-suchb data-bs-toggle="dropdown" class="form-control" placeholder="Suche" name="suchb" id="suchb" type="text" />
                                 <button type="submit" class="btn btn-primary">suchen</button>
                             </form>
+                                <ul class="dropdown-menu" name="artikel" id="artikel">
+                                </ul>
+                            </div>
                         </li>
                         @if (string.IsNullOrEmpty(Context.Session.GetString("lhash")))
                         {
@@ -61,8 +65,9 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/asuche.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
