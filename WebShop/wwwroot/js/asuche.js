@@ -2,7 +2,7 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/asucher").build();
 
-//Disable the send button until connection is established.
+//Disable the search until connection is established.
 document.getElementById("suchb").disabled = true;
 
 connection.on("GefundeneArtikel", function (jsonArray) {
