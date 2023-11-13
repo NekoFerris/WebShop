@@ -3,7 +3,9 @@
 @model WebShop.Pages.Shared.asucheModel
 @if(Model.korrecktur != "")
 {
-    <div class="header"><span>Meinsten sie @Model.korrecktur?</span></div>
+    <div class="header">
+        <span><form method="post" asp-page="asuche" asp-page-handler="Suchen">Meinsten sie <input asp-route-suchb class="form-control" placeholder="Suche" name="suchb" type="hidden" value="@Model.korrecktur"><button class="button" type="submit">@Model.korrecktur?</button></form></span>
+    </div>
 }
 <div class="grid gap-3">
     <div class="col">

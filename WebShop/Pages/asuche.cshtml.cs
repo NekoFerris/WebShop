@@ -16,17 +16,19 @@ namespace WebShop.Pages.Shared
         public void OnPostSuchen(string suchb)
         {
             if (suchb != null)
-                artikels = Artikel.AlleLesen(suchb);
-            if (artikels.IsNullOrEmpty())
             {
-                List<Artikel> _lstArt = new();
-                List<int> _lstGleichheit = new();
-                _lstArt = Artikel.AlleLesen();
-                foreach (Artikel a in _lstArt)
+                artikels = Artikel.AlleLesen(suchb);
+                if (artikels.IsNullOrEmpty())
                 {
-
+                    List<Artikel> _lstArt = new();
+                    List<double> _lstGleichheit = new();
+                    _lstArt = Artikel.AlleLesen();
+                    foreach (Artikel a in _lstArt)
+                    {
+                        _lstGleichheit.Add(StringHelfer.CompareStrings(a.Bezeichnung, suchb));
+                    }
+                    korrecktur = _lstGleichheit.Max() > 0 ? _lstArt[_lstGleichheit.IndexOf(_lstGleichheit.Max())].Bezeichnung.ToString() : "";
                 }
-                korrecktur = _lstArt[_lstGleichheit.IndexOf(_lstGleichheit.Max())].Bezeichnung.ToString();
             }
             else
             {
