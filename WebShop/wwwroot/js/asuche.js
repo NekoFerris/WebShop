@@ -9,12 +9,14 @@ connection.on("GefundeneArtikel", function (jsonArray) {
     if (jsonArray.length > 0) {
         var listelemente = "";
         for (var i = 0; i < jsonArray.length; i++) {
-            listelemente += "<li><a class=\"dropdown-item\" href=\"asuche\">" + jsonArray[i] + "</a></li>";
+            listelemente += "<form method=\"post\"><input name=\"suchb\" id=\"suchb\" type=\"hidden\" value=\"" + jsonArray[i] + "\"/><button type=\"submit\" class=\"btn\">" + jsonArray[i] + "</button></form></li>";
         }
         document.getElementById("artikel").innerHTML = listelemente;
+        document.getElementById("artikel").style.display = "block"
     }
     else {
         document.getElementById("artikel").innerHTML = "";
+        document.getElementById("artikel").style.display = "none"
     }
 });
 
