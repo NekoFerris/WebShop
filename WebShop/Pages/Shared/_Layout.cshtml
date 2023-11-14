@@ -38,10 +38,11 @@
                                 <button type="submit" class="btn btn-primary">Login</button>
                                 <button type="submit" class="btn btn-secondary" asp-page="/reg">Registrieren</button>
                                 </form>
-                        </li>
+                            </li>
                         }
                         else
                         {
+                            int anzart = Bestellung.AnzArt(Int32.Parse(Context.Session.GetString("id")));
                             <li class="nav-item p-2">
                                 <form name="logout" method="get" class="input-group" asp-area="" asp-page="/logout">
                                     <span class="input-group-text">@Kunde.Lesen(Int32.Parse(Context.Session.GetString("id"))).Email</span>
@@ -50,7 +51,15 @@
                             </li>
                             <li class="nav-item p-2">
                                 <form name="Warenkorb" method="get" class="input-group" asp-area="" asp-page="/warenkorb">
-                                    <button type="submit" class="btn">Warenkorb</button>
+                                    <button type="submit" class="btn">Warenkorb
+                                    @if (anzart > 0)
+                                    {
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            @anzart
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    }
+                                    </button>
                                 </form>
                             </li>
                         }
