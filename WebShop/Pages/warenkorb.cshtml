@@ -1,0 +1,39 @@
+﻿@page
+@model WebShop.Pages.warenkorbModel
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Anzahl</th>
+            <th scope="col">Artikel</th>
+            <th scope="col">Einzelpreis</th>
+            <th scope="col">Gesamtpreis</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0;
+            decimal gespreis = 0;
+            decimal gespreispos = 0;
+        }
+        @foreach (BestellPos pos in Model._bestellung.LstBestPoss)
+        {
+            Artikel a = Model.artikels[i];
+            gespreispos = pos.Preis * pos.Anzahl;
+            gespreis += gespreispos;
+            <tr>
+                <td>@pos.Anzahl</td>
+                <td>@a.Bezeichnung</td>
+                <td>@pos.Preis.ToString("C2")</td>
+                <td>@gespreispos.ToString("C2")</td>
+            </tr>
+            i++;
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Gesamt</td>
+            <td colspan="2"></td>
+            <td>@gespreis.ToString("C2")</td>
+        </tr>
+    </tfoot>
+</table>
