@@ -1,6 +1,6 @@
 ﻿@page
 @using System.Globalization;
-@model WebShop.Pages.Shared.asucheModel
+@model WebShop.Pages.Shared.AsucheModel
 @if(Model.korrecktur != "")
 {
     <div class="header">
@@ -35,7 +35,7 @@
                     <div class="col">
                         <div class="input-group">
                             <label class="input-group-text" for="menge">Anzahl</label>
-                            <input class="form-control" type="number" id="menge" name="menge" asp-route-menge required />
+                            <input class="form-control" type="number" id="menge" name="menge" min="1" asp-route-menge required />
                             <button class="btn btn-primary" type="submit">In den Warenkorb</button>
                         </div>
                     </div>

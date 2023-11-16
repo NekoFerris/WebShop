@@ -6,7 +6,7 @@ using System;
 
 namespace WebShop.Pages
 {
-    public class warenkorbModel : PageModel
+    public class WarenkorbModel : PageModel
     {
         public Bestellung _bestellung = new();
         public List<Artikel> artikels = new();
@@ -29,7 +29,7 @@ namespace WebShop.Pages
             {
                 Bestellung bestellung = new();
                 ObservableCollection<BestellPos> bestellPos = new();
-                _bestellung = bestellung.Laden(Int32.Parse(HttpContext.Session.GetString("id")));
+                _bestellung = Bestellung.Laden(Int32.Parse(HttpContext.Session.GetString("id")));
                 _bestellung.LstBestPoss = BestellPos.AlleLaden(Int32.Parse(HttpContext.Session.GetString("id")));
                 List<KeyValuePair<string, StringValues>> daten = HttpContext.Request.Form.Where(q => q.Key.Split(",")[0] == "menge").ToList();
                 foreach (KeyValuePair<string, StringValues> valuePair in daten)
@@ -63,9 +63,7 @@ namespace WebShop.Pages
 
         public void TabelleFuellen()
         {
-            Bestellung bestellung = new();
-            ObservableCollection<BestellPos> bestellPos = new();
-            _bestellung = bestellung.Laden(Int32.Parse(HttpContext.Session.GetString("id")));
+            _bestellung = Bestellung.Laden(Int32.Parse(HttpContext.Session.GetString("id")));
             _bestellung.LstBestPoss = BestellPos.AlleLaden(Int32.Parse(HttpContext.Session.GetString("id")));
             foreach (BestellPos pos in _bestellung.LstBestPoss)
             {

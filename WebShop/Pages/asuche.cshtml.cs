@@ -5,7 +5,7 @@ using System.Text.Json.Nodes;
 
 namespace WebShop.Pages.Shared
 {
-    public class asucheModel : PageModel
+    public class AsucheModel : PageModel
     {
         public List<Artikel> artikels = new();
         public string korrecktur = "";
@@ -22,7 +22,7 @@ namespace WebShop.Pages.Shared
                 artikels = Artikel.AlleLesen(suchb);
                 if (artikels.IsNullOrEmpty())
                 {
-                    List<Artikel> _lstArt = new();
+                    List<Artikel> _lstArt;
                     List<double> _lstGleichheit = new();
                     _lstArt = Artikel.AlleLesen();
                     foreach (Artikel a in _lstArt)
