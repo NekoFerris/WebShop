@@ -31,21 +31,21 @@ namespace WebShop.Pages
                 ObservableCollection<BestellPos> bestellPos = new();
                 _bestellung = bestellung.Laden(Int32.Parse(HttpContext.Session.GetString("id")));
                 _bestellung.LstBestPoss = BestellPos.AlleLaden(Int32.Parse(HttpContext.Session.GetString("id")));
-                List<KeyValuePair<string, StringValues>> daten = HttpContext.Request.Form.Where(q => q.Key.Split(",")[0] == "menge").ToList(); ;
+                List<KeyValuePair<string, StringValues>> daten = HttpContext.Request.Form.Where(q => q.Key.Split(",")[0] == "menge").ToList();
                 foreach (KeyValuePair<string, StringValues> valuePair in daten)
                 {
                     try
                     {
-                        int id = Int32.Parse(valuePair.Key.Split(",")[1]);
+                        int pos = Int32.Parse(valuePair.Key.Split(",")[1]);
                         int mengeneu = Int32.Parse(valuePair.Value);
-                        int mengealt = _bestellung.LstBestPoss.Where(b => b.Id == id).Single().Anzahl;
+                        int mengealt = _bestellung.LstBestPoss.Where(b => b.Id == pos).Single().Anzahl;
                         if (mengeneu != mengealt && mengeneu > 0)
                         {
-                            _bestellung.LstBestPoss.Where(b => b.Id == id).Single().MengeAendern(mengeneu);
+                            _bestellung.LstBestPoss.Where(b => b.Id == pos).Single().MengeAendern(mengeneu);
                         }
                         else if (mengeneu == 0)
                         {
-                            Bestellung.ArtikelEntfernen(Int32.Parse(HttpContext.Session.GetString("id")), id);
+                            Bestellung.ArtikelEntfernen(Int32.Parse(HttpContext.Session.GetString("id")), pos);
                             Response.Redirect("/");
                         }
                     }
