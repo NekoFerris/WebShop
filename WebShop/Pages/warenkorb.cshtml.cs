@@ -46,7 +46,6 @@ namespace WebShop.Pages
                         else if (mengeneu == 0)
                         {
                             Bestellung.ArtikelEntfernen(Int32.Parse(HttpContext.Session.GetString("id")), pos);
-                            Response.Redirect("/");
                         }
                     }
                     catch

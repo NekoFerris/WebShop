@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebShop.Pages
 {
-    public class regModel : PageModel
+    public class RegModel : PageModel
     {
         [BindProperty]
-        public Kunde k { get; set; } = new();
+        public Kunde K { get; set; } = new();
 
         public void OnGet()
         {
@@ -14,8 +14,8 @@ namespace WebShop.Pages
 
         public void OnPostReg()
         {
-            k.Anlegen();
-            k = new();
+            K.Anlegen();
+            K = new();
             Response.Redirect("/");
         }
     }

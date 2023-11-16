@@ -9,7 +9,7 @@ namespace WebShop.SignalR
     {
         public void ArtikelSuche(string suchb)
         {
-            JsonArray jsonArray = new JsonArray();
+            JsonArray jsonArray = new();
             JsonNode jsonNode;
             if (!suchb.IsNullOrEmpty())
             {

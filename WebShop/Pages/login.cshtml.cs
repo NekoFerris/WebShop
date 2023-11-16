@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebShop.Pages.Shared
 {
-    public class loginModel : PageModel
+    public class LoginModel : PageModel
     {
         public void OnPostLogin(string email, string passwort)
         {
