@@ -37,7 +37,7 @@ namespace WebShop.Pages
                     {
                         int pos = Int32.Parse(valuePair.Key.Split(",")[1]);
                         int mengeneu = Int32.Parse(valuePair.Value);
-                        int mengealt = _bestellung.LstBestPoss.Where(b => b.Id == pos).Single().Anzahl;
+                        int mengealt = _bestellung.LstBestPoss.Where(b => b.Id == pos).Single().Menge;
                         if (mengeneu != mengealt && mengeneu > 0)
                         {
                             _bestellung.LstBestPoss.Where(b => b.Id == pos).Single().MengeAendern(mengeneu);
