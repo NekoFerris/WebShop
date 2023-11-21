@@ -30,12 +30,12 @@
                 </div>
                 @if (!string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
                 {
-                <input type="hidden" name="artnr" asp-route-artnr value="@a.Id" />
+                <input type="hidden" name="artnr" value="@a.Id" />
                 <div class="row flex-nowrap p-2">
                     <div class="col">
                         <div class="input-group">
                             <label class="input-group-text" for="menge">Anzahl</label>
-                            <input class="form-control" type="number" id="menge" name="menge" min="1" asp-route-menge required />
+                            <input class="form-control" type="number" id="menge" name="menge" value="0" min="1" required />
                             <button class="btn btn-primary" type="submit">In den Warenkorb</button>
                         </div>
                     </div>
