@@ -41,7 +41,7 @@ namespace WebShop.Pages.Shared
             if (artnr == null || menge == null || HttpContext.Session.GetString("id") == null)
                 return;
             Bestellung.ArtikelHinzufuegen(Int32.Parse(HttpContext.Session.GetString("id")), artnr.Value, menge.Value);
-            Response.Redirect("/");
+            Response.Redirect("warenkorb");
         }
     }
 }
