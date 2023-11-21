@@ -6,7 +6,9 @@ namespace WebShop.Pages.Shared
     {
         public void OnPostLogin(string email, string passwort)
         {
-            if (Kunde.Auth(email, passwort, out Kunde k))
+            if (string.IsNullOrWhiteSpace(passwort) || string.IsNullOrWhiteSpace(email))
+                return;
+            if (Kunde.Auth(email.Trim(), passwort, out Kunde k))
             {
                 HttpContext.Session.SetString("lhash", k.GetHashCode().ToString());
                 HttpContext.Session.SetString("id", k.Id.ToString());

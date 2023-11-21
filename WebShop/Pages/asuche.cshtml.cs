@@ -36,9 +36,11 @@ namespace WebShop.Pages.Shared
             }
         }
 
-        public void OnPostAddArtikel(int artnr, int menge)
+        public void OnPostAddArtikel(int? artnr, int? menge)
         {
-            Bestellung.ArtikelHinzufuegen(Int32.Parse(HttpContext.Session.GetString("id")), artnr, menge);
+            if (artnr == null || menge == null || HttpContext.Session.GetString("id") == null)
+                return;
+            Bestellung.ArtikelHinzufuegen(Int32.Parse(HttpContext.Session.GetString("id")), artnr.Value, menge.Value);
             Response.Redirect("/");
         }
     }
