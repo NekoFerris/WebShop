@@ -28,7 +28,7 @@ namespace WebShop.Pages
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
             {
                 ObservableCollection<BestellPos> bestellPos = new();
-                _bestellung = Bestellung.Laden(Int32.Parse(HttpContext.Session.GetString("id")));
+                _bestellung = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
                 _bestellung.LstBestPoss = BestellPos.AlleLaden(_bestellung.Id);
                 List<KeyValuePair<string, StringValues>> daten = HttpContext.Request.Form.Where(q => q.Key.Split(",")[0] == "menge").ToList();
                 foreach (KeyValuePair<string, StringValues> valuePair in daten)
@@ -61,7 +61,7 @@ namespace WebShop.Pages
 
         public void TabelleFuellen()
         {
-            _bestellung = Bestellung.Laden(Int32.Parse(HttpContext.Session.GetString("id")));
+            _bestellung = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
             _bestellung.LstBestPoss = BestellPos.AlleLaden(_bestellung.Id);
             foreach (BestellPos pos in _bestellung.LstBestPoss)
             {
