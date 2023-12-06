@@ -1,6 +1,8 @@
 ﻿@page
 @model WebShop.Pages.WarenkorbModel
 <form method="post" asp-page-handler="Aktuallesieren">
+    @if (Model.Bestellung != null)
+    {
     <table class="table">
         <thead>
             <tr>
@@ -8,12 +10,9 @@
                 <th scope="col">Artikel</th>
                 <th scope="col" class="text-end">Einzelpreis</th>
                 <th scope="col" class="text-end">Gesamtpreis</th>
-            </tr>
-        </thead>
+                </tr>
+            </thead>
         <tbody>
-            @{
-                int i = 0;
-            }
             @foreach (BestellPos pos in Model.Bestellung.LstBestPoss)
             {
                 string handler = $"menge,{pos.Id}";
@@ -23,7 +22,6 @@
                     <td class="text-end">@pos.Preis.ToString("C2")</td>
                     <td class="text-end">@pos.PosPreis.ToString("C2")</td>
                 </tr>
-                i++;
             }
         </tbody>
         <tfoot>
@@ -34,4 +32,5 @@
             </tr>
         </tfoot>
     </table>
+    }
 </form>
