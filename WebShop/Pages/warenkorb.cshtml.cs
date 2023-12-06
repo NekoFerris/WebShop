@@ -8,8 +8,7 @@ namespace WebShop.Pages
 {
     public class WarenkorbModel : PageModel
     {
-        public Bestellung _bestellung = new();
-        public List<Artikel> artikels = new();
+        public Bestellung Bestellung = new();
 
         public void OnGet()
         {
@@ -27,9 +26,7 @@ namespace WebShop.Pages
         {
             if (!string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
             {
-                ObservableCollection<BestellPos> bestellPos = new();
-                _bestellung = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
-                _bestellung.LstBestPoss = BestellPos.AlleLesen(_bestellung.Id);
+                Bestellung = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
                 List<KeyValuePair<string, StringValues>> daten = HttpContext.Request.Form.Where(q => q.Key.Split(",")[0] == "menge").ToList();
                 foreach (KeyValuePair<string, StringValues> valuePair in daten)
                 {
@@ -37,14 +34,14 @@ namespace WebShop.Pages
                     {
                         int pos = Int32.Parse(valuePair.Key.Split(",")[1]);
                         int mengeneu = Int32.Parse(valuePair.Value);
-                        int mengealt = _bestellung.LstBestPoss.Where(b => b.Id == pos).Single().Menge;
+                        int mengealt = Bestellung.LstBestPoss.Where(b => b.Id == pos).Single().Menge;
                         if (mengeneu != mengealt && mengeneu > 0)
                         {
-                            _bestellung.LstBestPoss.Where(b => b.Id == pos).Single().MengeAendern(mengeneu);
+                            throw new NotImplementedException();
                         }
                         else if (mengeneu == 0)
                         {
-                            Bestellung.ArtikelEntfernen(Int32.Parse(HttpContext.Session.GetString("id")), pos);
+                            throw new NotImplementedException();
                         }
                     }
                     catch
@@ -61,8 +58,7 @@ namespace WebShop.Pages
 
         public void TabelleFuellen()
         {
-            _bestellung = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
-            _bestellung.LstBestPoss = BestellPos.AlleLesen(_bestellung.Id);
+            Bestellung = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
         }
     }
 }

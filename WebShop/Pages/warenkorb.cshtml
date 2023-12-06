@@ -14,13 +14,12 @@
             @{
                 int i = 0;
             }
-            @foreach (BestellPos pos in Model._bestellung.LstBestPoss)
+            @foreach (BestellPos pos in Model.Bestellung.LstBestPoss)
             {
-                Artikel a = Model.artikels[i];
                 string handler = $"menge,{pos.Id}";
                 <tr>
                     <td><input type="number" name="@handler" id="@handler" value="@pos.Menge"></td>
-                    <td>@a.Bezeichnung</td>
+                    <td>@pos.Artikel.Bezeichnung</td>
                     <td class="text-end">@pos.Preis.ToString("C2")</td>
                     <td class="text-end">@pos.PosPreis.ToString("C2")</td>
                 </tr>
@@ -31,7 +30,7 @@
             <tr>
                 <td colspan="2"><button class="btn btn-primary" type="submit">Menge Ändern</button></td>
                 <td class="text-end">Gesamt</td>
-                <td class="text-end">@Model._bestellung.GesPreis.ToString("C2")</td>
+                <td class="text-end">@Model.Bestellung.GesPreis.ToString("C2")</td>
             </tr>
         </tfoot>
     </table>

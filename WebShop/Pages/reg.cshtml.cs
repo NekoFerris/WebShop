@@ -14,6 +14,7 @@ namespace WebShop.Pages
 
         public void OnPostReg()
         {
+            K.Pw = ShopBase.Persistenz.DBTools.HashPassword(K.Pw);
             K.Anlegen();
             K = new();
             Response.Redirect("/");
