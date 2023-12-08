@@ -1,0 +1,36 @@
+﻿@page
+@model WebShop.Pages.WarenkorbModel
+<form method="post" asp-page-handler="Aktuallesieren">
+    @if (Model.Bestellung != null)
+    {
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Anzahl</th>
+                <th scope="col">Artikel</th>
+                <th scope="col" class="text-end">Einzelpreis</th>
+                <th scope="col" class="text-end">Gesamtpreis</th>
+                </tr>
+            </thead>
+        <tbody>
+            @foreach (BestellPos pos in Model.Bestellung.LstBestPoss)
+            {
+                string handler = $"menge,{pos.Id}";
+                <tr>
+                    <td><input type="number" name="@handler" id="@handler" value="@pos.Menge"></td>
+                    <td>@pos.Artikel.Bezeichnung</td>
+                    <td class="text-end">@pos.Preis.ToString("C2")</td>
+                    <td class="text-end">@pos.PosPreis.ToString("C2")</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"><button class="btn btn-primary" type="submit">Menge Ändern</button></td>
+                <td class="text-end">Gesamt</td>
+                <td class="text-end">@Model.Bestellung.GesPreis.ToString("C2")</td>
+            </tr>
+        </tfoot>
+    </table>
+    }
+</form>

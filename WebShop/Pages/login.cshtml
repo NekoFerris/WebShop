@@ -1,4 +1,17 @@
 ﻿@page
-@model WebShop.Pages.Shared.loginModel
+@model WebShop.Pages.Shared.LoginModel
 @{
 }
+<form name="login" method="post" class="row g-3" asp-page-handler="Login">
+    <div class="col">
+        <label for="email">E-mail</label>
+        <input class="input-group-text" name="email" placeholder="E-mail" type="email" asp-route-email required />
+    </div>
+    <div class="col">
+        <label for="passwort">Passwort</label>
+        <input class="input-group-text" name="passwort" placeholder="Passwort" type="password" asp-route-passwort required />
+    </div>
+    <div class="col">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+</form>

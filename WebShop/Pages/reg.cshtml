@@ -1,4 +1,56 @@
 ﻿@page
-@model WebShop.Pages.regModel
+@model WebShop.Pages.RegModel
 @{
 }
+<form method="post" class="row g-3" asp-page-handler="Reg">
+    <div class="col-md-6">
+        <div class="input-group">
+            <label class="input-group-text" for="k_Vorname">Name</label>
+            <input class="form-control" asp-for="K.Name" required />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group">
+            <label class="input-group-text" for="k_Vorname">Vorname</label>
+            <input class="form-control" asp-for="K.Vorname" required />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group">
+            <label class="input-group-text" for="k_Adresse">Adresse</label>
+            <input class="form-control" asp-for="K.Adresse" required />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group">
+        <label class="input-group-text" for="k_Geschlecht">Geschlecht</label>
+            <select class="form-select" class="form-control" id="_Geschlecht" asp-for="K.Geschlecht" required>
+                <option value="1">Männlich</option>
+                <option value="2">Weiblich</option>
+                <option value="3">Divers</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group">
+            <label class="input-group-text" for="k_Email">E-mail</label>
+            <input class="form-control" asp-for="K.Email" type="email" required />
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="input-group">
+            <label class="input-group-text" for="k_Pw">Passwort</label>
+            <input class="form-control" asp-for="K.Pw" type="password" required />
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-group">
+            <label class="input-group-text" for="k_GebDat">Geburtstag</label>
+            <input class="form-control" type="date" asp-for="K.GebDat" required />
+        </div>
+    </div>
+    <div class="col">
+        <button type="submit" class="btn btn-primary">Regestrieren</button>
+        <button type="reset" class="btn btn-secondary">Zurücksetzen</button>
+    </div>
+</form>

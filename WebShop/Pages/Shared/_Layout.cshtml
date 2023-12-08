@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,15 +19,50 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        <li class="nav-item p-2">
+                            <div class="dropdown" data-bs-display="static">
+                            <form method="post" class="input-group" asp-page="/asuche" asp-page-handler="Suchen">
+                                <input asp-route-suchb class="form-control" placeholder="Suche" name="suchb" id="suchb" type="text" />
+                                <button type="submit" class="btn btn-primary">suchen</button>
+                                </form>
+                                <ul class="dropdown-menu" name="artikel" id="artikel">
+                                </ul>
+                            </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/asuche">Artikelsuche</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+                        @if (string.IsNullOrEmpty(Context.Session.GetString("lhash")))
+                        {
+                        <li class="nav-item p-2">
+                            <form name="login" method="post" class="input-group" asp-page="/login" asp-page-handler="Login">
+                                <input class="form-control" name="email" placeholder="E-mail" type="email" asp-route-email />
+                                <input class="form-control" name="passwort" placeholder="Passwort" type="password" asp-route-passwort />
+                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-secondary" asp-page="/reg">Registrieren</button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            int anzart = Bestellung.AnzArt(Int32.Parse(Context.Session.GetString("id")));
+                            <li class="nav-item p-2">
+                                <form name="logout" method="get" class="input-group" asp-area="" asp-page="/logout">
+                                    <span class="input-group-text">@Kunde.Lesen(Int32.Parse(Context.Session.GetString("id"))).Email</span>
+                                    <button type="submit" class="btn btn-secondary">Logout</button>
+                                </form>
+                            </li>
+                            <li class="nav-item p-2">
+                                <form name="Warenkorb" method="get" class="input-group" asp-area="" asp-page="/warenkorb">
+                                    <button type="submit" class="btn">Warenkorb
+                                    @if (anzart > 0)
+                                    {
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                            @anzart
+                                            <span class="visually-hidden">unread messages</span>
+                                        </span>
+                                    }
+                                    </button>
+                                </form>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -40,15 +75,13 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - WebShop - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+    <script src="~/js/asuche.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
