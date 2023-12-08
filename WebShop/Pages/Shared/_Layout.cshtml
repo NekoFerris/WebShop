@@ -42,8 +42,7 @@
                         }
                         else
                         {
-                            @*int anzart = Bestellung.AnzArt(Int32.Parse(Context.Session.GetString("id")));*@
-                            int anzart = 0;
+                            int anzart = Bestellung.AnzArt(Int32.Parse(Context.Session.GetString("id")));
                             <li class="nav-item p-2">
                                 <form name="logout" method="get" class="input-group" asp-area="" asp-page="/logout">
                                     <span class="input-group-text">@Kunde.Lesen(Int32.Parse(Context.Session.GetString("id"))).Email</span>

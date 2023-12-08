@@ -34,14 +34,15 @@ namespace WebShop.Pages
                     {
                         int pos = Int32.Parse(valuePair.Key.Split(",")[1]);
                         int mengeneu = Int32.Parse(valuePair.Value);
-                        int mengealt = Bestellung.LstBestPoss.Where(b => b.Id == pos).Single().Menge;
+                        BestellPos bestellPos = Bestellung.LstBestPoss.Where(b => b.Id == pos).Single();
+                        int mengealt = bestellPos.Menge;
                         if (mengeneu != mengealt && mengeneu > 0)
                         {
-                            throw new NotImplementedException();
+                            bestellPos.MengeAendern(mengeneu);
                         }
                         else if (mengeneu == 0)
                         {
-                            throw new NotImplementedException();
+                            Bestellung.ArtikelEntfernen(Bestellung.LstBestPoss.IndexOf(bestellPos));
                         }
                     }
                     catch
