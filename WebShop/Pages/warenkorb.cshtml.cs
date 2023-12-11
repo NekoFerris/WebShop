@@ -57,6 +57,12 @@ namespace WebShop.Pages
             }
         }
 
+        public void OnPostBestellen()
+        {
+            Bestellung best = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
+            best.Bestellen();
+        }
+
         public void TabelleFuellen()
         {
             Bestellung = Bestellung.OffeneBestellung(Int32.Parse(HttpContext.Session.GetString("id")));
