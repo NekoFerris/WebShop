@@ -17,7 +17,7 @@ namespace WebShop.Pages.Shared
             if (suchb != null)
             {
                 artikels = Artikel.AlleLesen(suchb);
-                if (artikels == null)
+                if (artikels.Count == 0)
                 {
                     List<Artikel> _lstArt;
                     List<double> _lstGleichheit = new();
