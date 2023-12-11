@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR;
-using Microsoft.IdentityModel.Tokens;
 using System.Text.Json.Nodes;
 
 namespace WebShop.SignalR
@@ -10,7 +9,7 @@ namespace WebShop.SignalR
         {
             JsonArray jsonArray = new();
             JsonNode jsonNode;
-            if (!suchb.IsNullOrEmpty())
+            if (!string.IsNullOrEmpty(suchb))
             {
                 List<Artikel> _lstartikels = Artikel.AlleLesen(suchb);
                 List<double> _lstGleichheit = new();

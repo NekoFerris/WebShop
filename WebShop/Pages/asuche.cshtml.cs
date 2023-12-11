@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.IdentityModel.Tokens;
 
 namespace WebShop.Pages.Shared
 {
@@ -18,7 +17,7 @@ namespace WebShop.Pages.Shared
             if (suchb != null)
             {
                 artikels = Artikel.AlleLesen(suchb);
-                if (artikels.IsNullOrEmpty())
+                if (artikels == null)
                 {
                     List<Artikel> _lstArt;
                     List<double> _lstGleichheit = new();
