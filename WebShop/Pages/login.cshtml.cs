@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebShop.Pages.Shared
@@ -12,7 +13,7 @@ namespace WebShop.Pages.Shared
             {
                 HttpContext.Session.SetString("lhash", k.GetHashCode().ToString());
                 HttpContext.Session.SetString("id", k.Id.ToString());
-                Response.Redirect("/");
+                Response.Redirect(Request.Headers["Referer"].ToString());
             }
         }
     }
