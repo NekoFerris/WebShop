@@ -11,6 +11,7 @@ namespace WebShop.Pages.Shared
         {
             artikels = Artikel.AlleLesen();
         }
+
         public void OnPost(string? suchb)
         {
             artikels = Artikel.AlleLesen();
