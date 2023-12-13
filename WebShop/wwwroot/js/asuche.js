@@ -9,7 +9,7 @@ connection.on("GefundeneArtikel", function (jsonArray) {
     if (jsonArray.length > 0) {
         var listelemente = "";
         for (var i = 0; i < jsonArray.length; i++) {
-            listelemente += "<form method=\"post\" action=\"/asuche?handler=Suchen\"><input name=\"suchb\" id=\"suchb\" type=\"hidden\" value=\"" + jsonArray[i] + "\"/><button type=\"submit\" class=\"btn\">" + jsonArray[i] + "</button></form></li>";
+            listelemente += "<li><fieldset><input name=\"suchb\" id=\"suchb\" type=\"hidden\" value=\"" + jsonArray[i] + "\"/><button type=\"submit\" class=\"btn\">" + jsonArray[i] + "</button></form></fieldset></li>";
         }
         document.getElementById("artikel").innerHTML = listelemente;
         document.getElementById("artikel").style.display = "block"

@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Collections.ObjectModel;
 using Microsoft.Extensions.Primitives;
-using System.Collections.Specialized;
-using System;
 
 namespace WebShop.Pages
 {

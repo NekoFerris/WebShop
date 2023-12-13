@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WebShop.Pages.Shared
