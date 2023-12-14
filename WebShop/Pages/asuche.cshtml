@@ -7,7 +7,7 @@
         <span><form method="post" asp-page="asuche" asp-page-handler="Suchen"><input asp-route-suchb class="form-control" placeholder="Suche" name="suchb" type="hidden" value="@Model.korrecktur"><button class="btn" type="submit">Meinten sie @Model.korrecktur?</button></form></span>
     </div>
 }
-<div class="grid gap-3">
+<div class="grid gap-3 justify-content-center">
     <div class="col">
     @foreach (Artikel a in Model.artikels)
     {
