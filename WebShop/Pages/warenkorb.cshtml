@@ -33,7 +33,12 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="2" class="gx-5"><button class="btn btn-secondary" type="submit">Menge Ändern</button><button asp-page-handler="Bestellen" class="btn btn-primary" type="submit">Bestellen</button></td>
+                            <td colspan="2" class="gx-5">
+                                <div class="input-group">
+                                    <button class="btn btn-secondary" type="submit">Menge Ändern</button>
+                                    <button asp-page-handler="Bestellen" class="btn btn-primary" type="submit">Bestellen</button>
+                                </div>
+                            </td>
                             <td class="text-end">Gesamt</td>
                             <td class="text-end">@Model.Bestellung.GesPreis.ToString("C2")</td>
                         </tr>

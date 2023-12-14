@@ -14,4 +14,8 @@
     <Using Include="ShopBase" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>
