@@ -1,4 +1,5 @@
 ﻿@page
+@using System.Globalization;
 @model WebShop.Pages.WarenkorbModel
 <form method="post" asp-page-handler="Aktuallesieren">
     <div class="justify-content-center">
@@ -26,8 +27,8 @@
                             <tr>
                                 <td><input type="number" name="@handler" id="@handler" value="@pos.Menge"></td>
                                 <td>@pos.Artikel.Bezeichnung</td>
-                                <td class="text-end">@pos.Preis.ToString("C2")</td>
-                                <td class="text-end">@pos.PosPreis.ToString("C2")</td>
+                                <td class="text-end">@pos.Preis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</td>
+                                <td class="text-end">@pos.PosPreis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</td>
                             </tr>
                         }
                     </tbody>
@@ -40,7 +41,7 @@
                                 </div>
                             </td>
                             <td class="text-end">Gesamt</td>
-                            <td class="text-end">@Model.Bestellung.GesPreis.ToString("C2")</td>
+                            <td class="text-end">@Model.Bestellung.GesPreis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</td>
                         </tr>
                     </tfoot>
                 </table>
