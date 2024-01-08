@@ -34,6 +34,7 @@
                     @if (!string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
                     {
                         <div class="row" style="height:40px">
+                        <input type="hidden" name="artnr" value="@artikel.Id" />
                         <div class="col">
                             <div class="vstack gap-1">
                                 <div class="input-group">
