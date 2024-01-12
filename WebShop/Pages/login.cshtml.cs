@@ -4,15 +4,27 @@ namespace WebShop.Pages.Shared
 {
     public class LoginModel : PageModel
     {
+        public void OnGet()
+        {
+            Response.Redirect("/");
+        }
         public void OnPostLogin(string email, string passwort)
         {
-            if (string.IsNullOrWhiteSpace(passwort) || string.IsNullOrWhiteSpace(email))
-                return;
-            if (Kunde.Auth(email.Trim(), passwort, out Kunde k))
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
             {
-                HttpContext.Session.SetString("lhash", k.GetHashCode().ToString());
-                HttpContext.Session.SetString("id", k.Id.ToString());
-                Response.Redirect(Request.Headers["Referer"].ToString());
+                if (string.IsNullOrWhiteSpace(passwort) || string.IsNullOrWhiteSpace(email))
+                    return;
+                if (Kunde.Auth(email.Trim(), passwort, out Kunde k))
+                {
+                    HttpContext.Session.SetString("lhash", k.GetHashCode().ToString());
+                    HttpContext.Session.SetString("id", k.Id.ToString());
+                    Response.Redirect(Request.Headers["Referer"].ToString());
+                }
+            }
+            else
+            {
+                Response.Redirect("/");
             }
         }
     }
