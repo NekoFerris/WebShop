@@ -15,14 +15,6 @@
         <div class="p-2 g-col-6 margin-1">
             <form class="row- border border-primary-subtle rounded-2 bg-light" asp-page-handler="AddArtikel" method="post">
                 <div class="row p-2">
-                    <div class="col-2 p-2">
-                        <div class="row fw-bold">
-                            <span>@a.Bezeichnung</span>
-                        </div>
-                        <div class="row">
-                            <span>@a.Preis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</span>
-                        </div>
-                    </div>
                     @if(a.ShopImage != null)
                         {
                             string imgdata = $"data:image/jpg;base64,{Convert.ToBase64String(a.ShopImage.ImageData)}";
@@ -31,20 +23,31 @@
                                     <img src="@imgdata" style="width:auto;height:180px;" />
                                 </div>
                             </div>
-                            <div class="col p-1">
-                                <div class="col">
-                                    <p>@a.Beschreibung</p>
+                            <div class="col-2 p-2">
+                                <div class="row fw-bold">
+                                    <span>@a.Bezeichnung</span>
+                                </div>
+                                <div class="row">
+                                    <span>@a.Preis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</span>
                                 </div>
                             </div>
                         }
                         else
                         {
-                            <div class="col p-2">
-                                <div class="col">
-                                    <p>@a.Beschreibung</p>
+                            <div class="col-2 p-2">
+                                <div class="row fw-bold">
+                                    <span>@a.Bezeichnung</span>
+                                </div>
+                                <div class="row">
+                                    <span>@a.Preis.ToString("C2", CultureInfo.GetCultureInfoByIetfLanguageTag("de-DE"))</span>
                                 </div>
                             </div>
                         }
+                        <div class="col p-2">
+                            <div class="col">
+                                <p>@a.Beschreibung</p>
+                            </div>
+                        </div>
                 </div>
                 @if (!string.IsNullOrEmpty(HttpContext.Session.GetString("lhash")))
                 {
