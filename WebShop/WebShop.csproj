@@ -7,15 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Andreas_ShopBase\ShopBase.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Using Include="ShopBase" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ShopBase\ShopBase.csproj" />
   </ItemGroup>
 
 </Project>
